@@ -3,7 +3,7 @@
 
 
 {% set barcodeImg %}
-    <img src="/public/images/royal-mail-barcode.png" alt="Example of barcode - AA 1234 5678 9AA" class="max-width-100">
+    <img src="/public/images/royal-mail-barcode.png" alt="Example of barcode - AA 1234 5678 9AA" style="max-width: 400px; width: 100%">
 {% endset %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 </h1>
 
 <p class="govuk-body">
-    This appears on the right-hand side of your label. Do not scan the QR code, which is on the left.
+    This appears on the right hand side of your label. Do not scan the QR code, which is on the left.
 </p>
 
 <p class="govuk-body">
@@ -23,7 +23,7 @@
 
 {# https://design-system.service.gov.uk/components/details/ #}
 {{ govukDetails({
-    summaryText: "What does the barcode look like?",
+    summaryText: "What does your unique Royal Mail barcode look like?",
     html: barcodeImg
 }) }}
 
@@ -57,5 +57,7 @@
     }) }}
 
 </form>
+
+<a href="test-date-time" class="govuk-link">I do not know my Royal Mail barcode</a>
 
 {% endblock %}

@@ -1,6 +1,9 @@
 {% set pageTitle = "Enter the unique test kit barcode reference" %}
 {% extends "layout_service_step.html" %}
 
+{% set barcodeImg %}
+    <img src="/public/images/example-barcode.png" alt="Example of barcode - CHE00000501" class="max-width-100">
+{% endset %}
 
 {% block content %}
 
@@ -9,12 +12,22 @@
     </h1>
 
     <p class="govuk-body">
-        These 11 character references are located below the barcode. You’ll find these barcodes attached to the plastic tube, plastic bag and return box in the test kit.
+        Use the camera on your phone or computer to scan the test kit barcode. You'll find these barcodes attached to the plastic tube, plastic bag and return box in the test kit.
     </p>
 
     <p class="govuk-body">
         These are different from the pre-paid Royal Mail return package barcode on your box.
     </p>
+
+    <p class="govuk-body">
+        Or you can manually enter the 11 character reference below it.
+    </p>
+
+    {# https://design-system.service.gov.uk/components/details/ #}
+    {{ govukDetails({
+        summaryText: "What does the barcode look like?",
+        html: barcodeImg
+    }) }}
 
     <form class="form" action="/registering-for-answer" method="post">
 

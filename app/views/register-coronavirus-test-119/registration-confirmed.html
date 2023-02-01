@@ -1,0 +1,30 @@
+{% set pageTitle = "Registration confirmed" %}
+{% extends "layout_service_step.html" %}
+
+
+{% block content %}
+
+    {{ govukPanel({
+        titleText: pageTitle,
+        classes: "govuk-!-margin-bottom-8 govuk-!-padding-8"
+    }) }}
+
+    <p class="govuk-body">
+        Alex Kid's test has been registered
+    </p>
+
+    <p class="govuk-body">
+        You'll receive a text or email confirming your results.
+    </p>
+
+    <div class="govuk-button-group govuk-!-margin-top-8">
+    {{ govukButton({
+        text: "Register another barcode"
+    }) }}
+    {{ govukButton({
+        text: "Back to home",
+        classes: "govuk-button--secondary"
+    }) }}
+</div>
+
+{% endblock %}

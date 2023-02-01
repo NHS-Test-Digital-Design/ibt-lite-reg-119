@@ -1,0 +1,39 @@
+{% set pageTitle = "Enter the details of this place" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <form class="form" action="country" method="post">
+        {{ govukInput({
+            id: "education-name",
+            name: "education-name",
+            classes: "govuk-!-width-three-quarters",
+            label: {
+                text: "Name of the nursary, school or collage"
+            }
+        }) }}
+        {{ govukInput({
+            id: "education-town",
+            name: "education-town",
+            classes: "govuk-!-width-three-quarters",
+            label: {
+                text: "Town"
+            }
+        }) }}
+        
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+
+    <p class="govuk-body">
+        <a href="address/home-address-postcode" class="govuk-link">Prefer not to say</a>
+    </p>    
+
+{% endblock %}

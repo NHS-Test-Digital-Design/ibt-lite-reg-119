@@ -1,0 +1,46 @@
+{% set pageTitle = "Enter the unique test kit barcode reference" %}
+{% extends "layout_service_step.html" %}
+
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        These 11 character references are located below the barcode. You’ll find these barcodes attached to the plastic tube, plastic bag and return box in the test kit.
+    </p>
+
+    <p class="govuk-body">
+        These are different from the pre-paid Royal Mail return package barcode on your box.
+    </p>
+
+    <form class="form" action="/registering-for-answer" method="post">
+
+        {# https://design-system.service.gov.uk/components/text-input/ #}
+        {{ govukInput({
+            id: "barcodeRef",
+            name: "barcodeRef",
+            label: {
+                text: "Test kit barcode reference "
+            }
+        }) }}
+        {{ govukInput({
+            id: "confirmBarcodeRef",
+            name: "confirmBarcodeRef",
+            label: {
+                text: "Confirm test kit barcode reference "
+            }
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4",
+            href: "royal-mail-barcode"
+        }) }}
+
+    </form>
+
+{% endblock %}

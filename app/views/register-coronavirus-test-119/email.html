@@ -1,0 +1,72 @@
+{% set pageTitle = "Do you have an email address where you can get the test results?" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        Email is also the quickest way to get your test results.
+    </p>
+
+    <form class="form" action="#" method="post">
+
+        {% set emailInput %}
+            <p class="govuk-body">
+                Make sure you're happy for your test results to go to this email address
+            </p>
+            {{ govukInput({
+                id: "email",
+                name: "email",
+                classes: "govuk-!-width-one-half",
+                type: "email",
+                autocomplete: "email",
+                spellcheck: false,
+                label: {
+                    text: "Email address"
+                }
+            }) }}
+            {# {{ govukInput({
+                id: "confirmEmail",
+                name: "confirmEemail",
+                classes: "govuk-!-width-one-half",
+                type: "email",
+                autocomplete: "email",
+                spellcheck: false,
+                label: {
+                    text: "Confirm email address"
+                }
+            }) }} #}
+        {% endset %}
+
+        {{ govukRadios({
+            idPrefix: "hasEmail",
+            name: "hasEmail",
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes",
+                    conditional: {
+                        html: emailInput
+                    }
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4",
+            href: "mobile-number"
+        }) }}
+
+    </form>
+
+
+{% endblock %}
+

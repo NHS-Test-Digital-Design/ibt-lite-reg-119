@@ -1,0 +1,56 @@
+{% set pageTitle = "Coronavirus symptoms" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p>If you have symptoms, follow the guidance. The following links open in a new tab:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>
+            <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/self-isolation-and-treatment/when-to-self-isolate-and-what-to-do/" class="govuk-link" rel="noreferrer noopener" target="_blank">England: stay at home guidance<span class="govuk-visually-hidden">(opens in new tab)</span></a>
+        </li>
+        <li>
+            <a href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/coronavirus-covid-19/" class="govuk-link" rel="noreferrer noopener" target="_blank">Scotland: stay at home guidance<span class="govuk-visually-hidden">(opens in new tab)</span></a>
+        </li>
+        <li>
+            <a href="https://www.gov.wales/guidance-people-symptoms-respiratory-infection-including-covid-19" class="govuk-link" rel="noreferrer noopener" target="_blank">Wales: stay at home guidance<span class="govuk-visually-hidden">(opens in new tab)</span></a>
+        </li>
+        <li>
+            <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-testing-and-stay-home-advice" class="govuk-link" rel="noreferrer noopener" target="_blank">Northern Ireland: stay at home guidance<span class="govuk-visually-hidden">(opens in new tab)</span></a>
+        </li>
+    </ul>
+
+
+    <form class="form" action="/symptoms-answer" method="post">
+        {{ govukRadios({
+            idPrefix: "do-you-have-symptoms",
+            name: "do-you-have-symptoms",
+            classes: "govuk-!-margin-top-5",
+            fieldset: {
+                legend: {
+                    text: "Do you currently have any coronavirus symptoms?",
+                    isPageHeading: false,
+                    classes: "govuk-label govuk-label--s"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

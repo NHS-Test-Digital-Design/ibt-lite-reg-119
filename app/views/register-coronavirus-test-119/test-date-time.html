@@ -1,0 +1,140 @@
+{% set pageTitle = "Enter the date and time of the coronavirus test" %}
+{% extends "layout_service_step.html" %}
+
+
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        Select the date and time you'll take your coronavirus test. If you've already taken the coronavirus test, tell us the date and time you took it.
+    </p>
+
+    <p class="govuk-body">
+        We need to know this so the lab can work out when the test is due to expire. Selecting the wrong date and time could mean you getting an incorrect result.
+    </p>
+
+    <p class="govuk-body">
+        If you’re posting your completed test kit at a Royal Mail priority postbox, do this no later than 1 hour before the last collection.
+    </p>
+
+    {{ govukWarningText({
+        text: "If your home test swab sample is over 24 hours old and has not been returned yet, it's probably out of date. You need to get a new test kit and send a new sample.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    <form class="form" action="/registering-for-answer" method="post">
+        {% set diffDate %}
+            {{ govukDateInput({
+                id: "differentDate",
+                namePrefix: "differentDate",
+                fieldset: {
+                    legend: {
+                        text: "When was your sample taken?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--s"
+                    }
+                },
+                hint: {
+                    text: "For example, 26 3 20202"
+                },
+                items: [
+                    {
+                        name: "day",
+                        label: "Day",
+                        classes: "govuk-input--width-2"
+                    },
+                    {
+                        name: "month",
+                        label: "Month",
+                        classes: "govuk-input--width-2"
+                    },
+                    {
+                        name: "year",
+                        label: "Year",
+                        classes: "govuk-input--width-4"
+                    }
+                ]
+            }) }}
+        {% endset %}
+        {{ govukRadios({
+            idPrefix: "test-date",
+            name: "test-date",
+            fieldset: {
+                legend: {
+                    text: "Select a date",
+                    isPageHeading: false,
+                    classes: "govuk-fieldset__legend--s"
+                }
+            },
+            items: [
+                {
+                    value: "yesterday",
+                    text: "Yesterday, 12 October 2022 "
+                },
+                {
+                    value: "today",
+                    text: "Today, 13 October 2022 "
+                },
+                {
+                    value: "tomorrow",
+                    text: "Tomorrow, 14 October 2022 "
+                },
+                {
+                    value: "different",
+                    text: "A different date",
+                    conditional: {
+                        html: diffDate
+                    }
+                }
+            ]
+        }) }}
+
+        {{ govukInput({
+            id: "test-time-hour",
+            name: "test-time-hour",
+            classes: "govuk-input--width-2",
+            label: {
+                text: "Enter a time",
+                classes: "govuk-label--s"
+            },
+            hint: {
+                text: "For example, enter 9 then select am or pm "
+            }
+        }) }}
+
+
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "test-time-am-pm",
+            name: "test-time-am-pm",
+            fieldset: {
+            },
+            items: [
+                {
+                    value: "am",
+                    text: "am"
+                },
+                {
+                    value: "pm",
+                    text: "pm"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4",
+            href: "name"
+        }) }}
+
+    </form>
+
+
+
+
+
+{% endblock %}

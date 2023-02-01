@@ -1,0 +1,55 @@
+{% set pageTitle = "Do you have landline telephone number?" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <form class="form" action="gender" method="post">
+
+        {% set landlineInput %}
+            {{ govukInput({
+                id: "landline",
+                name: "landline",
+                classes: "govuk-!-width-one-half",
+                type: "tel",
+                autocomplete: "tel",
+                spellcheck: false,
+                label: {
+                    text: "Landline telephone number"
+                }             
+            }) }}
+            
+        {% endset %}
+
+        {{ govukRadios({
+            idPrefix: "hasLandline",
+            name: "hasLandline",
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes",
+                    conditional: {
+                        html: landlineInput
+                    }
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4",
+            href: "gender"
+        }) }}
+
+    </form>
+
+
+{% endblock %}
+

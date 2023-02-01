@@ -1,0 +1,61 @@
+{% set pageTitle = "Enter your Royal Mail barcode" %}
+{% extends "layout_service_step.html" %}
+
+
+{% set barcodeImg %}
+    <img src="/public/images/royal-mail-barcode.png" alt="Example of barcode - AA 1234 5678 9AA" class="max-width-100">
+{% endset %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">
+    {{ pageTitle }}
+</h1>
+
+<p class="govuk-body">
+    This appears on the right-hand side of your label. Do not scan the QR code, which is on the left.
+</p>
+
+<p class="govuk-body">
+    The Royal Mail barcode is also different from your home test kit barcode.
+</p>
+
+
+{# https://design-system.service.gov.uk/components/details/ #}
+{{ govukDetails({
+    summaryText: "What does the barcode look like?",
+    html: barcodeImg
+}) }}
+
+
+<form class="form" action="/registering-for-answer" method="post">
+
+    {# https://design-system.service.gov.uk/components/text-input/ #}
+    {{ govukInput({
+        id: "RMbarcodeRef",
+        name: "RMbarcodeRef",
+        label: {
+            text: "Royal Mail barcode reference"
+        },
+        hint: {
+            text: "For example, AA 1234 5678 9AA"
+        }
+    }) }}
+    {{ govukInput({
+        id: "confirmRMBarcodeRef",
+        name: "confirmRMBarcodeRef",
+        label: {
+            text: "Confirm Royal Mail barcode reference "
+        }
+    }) }}
+
+    {# https://design-system.service.gov.uk/components/button/ #}
+    {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-4",
+        href: "test-date-time"
+    }) }}
+
+</form>
+
+{% endblock %}

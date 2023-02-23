@@ -1,0 +1,19 @@
+{% set pageTitle = "There is a problem" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+        We cannot process your request. Please try again.
+    </p>
+
+    {{ govukButton({
+        text: "Try again",
+        classes: "govuk-!-margin-top-4"
+    }) }}
+
+{% endblock %}

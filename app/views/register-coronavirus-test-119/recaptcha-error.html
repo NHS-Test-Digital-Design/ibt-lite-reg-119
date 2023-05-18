@@ -1,0 +1,17 @@
+{% set pageTitle = "Sorry, you cannot register a coronavirus test right now" %}
+{% extends "layout_service.html" %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+      <p class="govuk-body">
+        Try again later.
+      </p>
+      <p class="govuk-body">
+      If the problem continues, <a href="https://www.nhs.uk/nhs-services/covid-19-services/when-to-call-119/" class="govuk-link" target="_self">find out when you can contact 119</a>. If you need a British Sign Language (BSL) interpreter, you can <a href="http://signvideo.co.uk/nhs119/" class="govuk-link" target="_self">use SignVideo to call 119</a>.
+      </p>
+
+{% endblock %}

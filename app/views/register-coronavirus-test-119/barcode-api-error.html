@@ -1,0 +1,25 @@
+{% set pageTitle = "There is a problem" %}
+{% extends "layout_service.html" %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <p class="govuk-body">
+      We could not confirm your test strip ID.
+    </p>
+    <p class="govuk-body">
+      If the problem continues, <a href="https://www.nhs.uk/nhs-services/covid-19-services/when-to-call-119/" class="govuk-link" target="_blank">find out when you can contact 119 (opens in new tab)</a>. If you need a British Sign Language (BSL) interpreter, you can <a href="http://signvideo.co.uk/nhs119/" class="govuk-link" target="_blank">use SignVideo to call 119 (opens in new tab)</a>.
+    </p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Try again",
+      classes: "govuk-!-margin-top-4",
+      href: "/register-coronavirus-test-119/barcode"
+    }) }}
+
+{% endblock %}
